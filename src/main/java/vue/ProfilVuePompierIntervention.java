@@ -15,6 +15,12 @@ public class ProfilVuePompierIntervention extends javax.swing.JFrame {
      * Creates new form ProfilVuePompierIntervention
      */
     public ProfilVuePompierIntervention() {
+        
+        int pomId= 1 ;
+        // recup intervention en fonction du pompier
+        //DAO 
+        
+        
         initComponents();
     }
 
@@ -37,6 +43,7 @@ public class ProfilVuePompierIntervention extends javax.swing.JFrame {
         JTableInter.setBackground(new java.awt.Color(240, 240, 240));
         JTableInter.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {"test", null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -78,9 +85,9 @@ public class ProfilVuePompierIntervention extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(53, 53, 53)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         pack();
