@@ -17,35 +17,42 @@ import modele.Pompier;
 public class PompierDAO {
 
     private Connection connexion;
-
+    Connection connection=null;
+    static PreparedStatement requete=null;
+    static ResultSet rs=null;
+    
     public PompierDAO(Connection connexion) {
         this.connexion = connexion;
     }
 
-    public ArrayList<Intervention> getInterventions(Pompier pompier) throws SQLException {
+    public ArrayList<Intervention> getInterventions(int idPompier) throws SQLException {
 
         ArrayList<Intervention> interventions = new ArrayList<>();
+        try
+        {
+        requete=connection.prepareStatement("SELECT * FROM Intervention, Intervention_pompier, Pompier WHERE IN_ID = IN_ID_1 AND POM_ID = IN_ID = ? ");
+  
+        requete.setInt(1,idPompier);
+        
+        rs=requete.executeQuery();
+        
+       {
 
-        String requete = "SELECT * FROM intervention WHERE id IN (SELECT INT_ID FROM Intervention_pompier WHERE IN_ID_1 = ?)";
+        
 
-        try (PreparedStatement statement = connexion.prepareStatement(requete)) {
+        while (rs.next()) {
 
-            statement.setInt(1, pompier.getId());
-            ResultSet result = statement.executeQuery();
+            Intervention intervention = new Intervention();
+            intervention.setId(rs.getInt("id"));
+            intervention.setLieu(rs.getString("lieu"));
+            intervention.setDateHeureAppel(rs.getString("dateHeureAppel"));
+            intervention.setDuree(rs.getInt("duree"));
+            intervention.setDateHeureArriv(rs.getString("dateHeureArriv"));
 
-            while (result.next()) {
-
-                Intervention intervention = new Intervention();
-                intervention.setId(result.getInt("id"));
-                intervention.setLieu(result.getString("lieu"));
-                intervention.setDateHeureAppel(result.getString("dateHeureAppel"));
-                intervention.setDuree(result.getInt("duree"));
-                intervention.setDateHeureArriv(result.getString("dateHeureArriv"));
-
-                interventions.add(intervention);
-            }
+            interventions.add(intervention);
         }
-
-        return interventions;
     }
+
+    return interventions;
+}
 }
