@@ -14,5 +14,4 @@ import lombok.Data;
 
     @Column(name = "nom")
     private String nom;
-
 }
