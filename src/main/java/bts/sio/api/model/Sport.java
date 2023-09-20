@@ -4,6 +4,8 @@ package bts.sio.api.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import javax.lang.model.element.NestingKind;
+
 @Data
 @Entity
 @Table(name ="sport")
@@ -14,4 +16,8 @@ import lombok.Data;
 
     @Column(name = "nom")
     private String nom;
+
+    @Column(name = "descriptif")
+    private String descriptif;
+
 }
