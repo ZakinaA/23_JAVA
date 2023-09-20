@@ -20,4 +20,8 @@ import javax.lang.model.element.NestingKind;
     @Column(name = "descriptif")
     private String descriptif;
 
+    @ManyToOne
+    @JoinColumn(name = "olympiade_id")
+    private Olympiade olympiade;
+
 }
