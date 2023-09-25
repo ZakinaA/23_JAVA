@@ -25,7 +25,7 @@ public class Epreuve_AthleteService {
         epreuveAthleteRepository.deleteById(id);
     }
 
-    public Epreuve_Athlete saveEpreuve(Epreuve_Athlete epreuveAthlete) {
+    public Epreuve_Athlete saveEpreuve_Athlete(Epreuve_Athlete epreuveAthlete) {
         Epreuve_Athlete saveEpreuve_Athlete = epreuveAthleteRepository.save(epreuveAthlete);
         return saveEpreuve_Athlete;
     }

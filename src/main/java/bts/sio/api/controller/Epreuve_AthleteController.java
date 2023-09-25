@@ -1,5 +1,6 @@
 package bts.sio.api.controller;
 
+
 import bts.sio.api.model.Epreuve_Athlete;
 import bts.sio.api.model.Sport;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +17,13 @@ public class Epreuve_AthleteController {
 
     /**
      * Create - Add a new athlete
-     * @param epreuve_Athlete An object athlete
+     * @param Epreuve_Athlete An object athlete
      * @return The  object saved
      */
     @PostMapping("/epreuve_athlete")
-    public Epreuve_Athlete createEpreuve_Athlete(@RequestBody Epreuve_Athlete epreuveAthlete) {
-        return epreuveAthleteService.getEpreuve_Athletes(epreuveAthlete);
+    public Epreuve_Athlete createEpreuve_Athlete(
+            @RequestBody Epreuve_Athlete epreuveAthlete) {
+        return epreuveAthleteService.saveEpreuve_Athlete(epreuveAthlete);
     }
 
 
@@ -30,11 +32,11 @@ public class Epreuve_AthleteController {
      * @param id The id of the Epreuve
      * @return An Epreuve object full filled
      */
-    @GetMapping("/epreuve/{id}")
-    public Epreuve getEpreuve(@PathVariable("id") final Long id) {
-        Optional<Epreuve> sport = epreuveService.getEpreuve(id);
-        if(sport.isPresent()) {
-            return sport.get();
+    @GetMapping("/epreuve_athlete/{id}")
+    public Epreuve_Athlete getEpreuve_Athletes(@PathVariable("id") final Long id) {
+        Optional<Epreuve_Athlete> EpreuveAthlete = epreuveAthleteService.getEpreuve_Athlete(id);
+        if(EpreuveAthlete.isPresent()) {
+            return EpreuveAthlete.get();
         } else {
             return null;
         }
@@ -44,35 +46,30 @@ public class Epreuve_AthleteController {
      * Read - Get all athletes
      * @return - An Iterable object of Athlete full filled
      */
-    @GetMapping("/epreuves")
-    public Iterable<Epreuve> getEpreuve() {
-        return epreuveService.getEpreuves();
+    @GetMapping("/epreuve_athletes")
+    public Iterable<Epreuve_Athlete> getEpreuve_Athlete() {
+        return epreuveAthleteService.getEpreuve_Athletes();
     }
 
     /**
      * Update - Update an existing athlete
      * @param id - The id of the athlete to update
-     * @param epreuve - The Epreuve object updated
+     * @param Epreuve_Athlete - The Epreuve object updated
      * @return
      */
-    @PutMapping("/epreuve/{id}")
-    public Epreuve updateEpreuve(@PathVariable("id") final Long id, @RequestBody Epreuve epreuve) {
-        Optional<Epreuve> e = epreuveService.getEpreuve(id);
+    @PutMapping("/epreuve_athlete/{id}")
+    public Epreuve_Athlete updateEpreuve_Athlete(@PathVariable("id") final Long id, @RequestBody Epreuve_Athlete Epreuve_Athlete) {
+        Optional<Epreuve_Athlete> e = epreuveAthleteService.getEpreuve_Athlete(id);
         if(e.isPresent()) {
-            Epreuve currentEpreuve = e.get();
+            Epreuve_Athlete currentEpreuve_Athlete = e.get();
 
-            String nom = epreuve.getNom();
-            if(nom != null) {
-                currentEpreuve.setNom(nom);
+            String place = Epreuve_Athlete.getPlace();
+            if(place != null) {
+                currentEpreuve_Athlete.setPlace(place);
             }
 
-            Sport sport_id = epreuve.getSport();
-            if(sport_id != null) {
-                currentEpreuve.setSport(sport_id);;
-            }
-
-            epreuveService.saveEpreuve(currentEpreuve);
-            return currentEpreuve;
+            epreuveAthleteService.saveEpreuve_Athlete(currentEpreuve_Athlete);
+            return currentEpreuve_Athlete;
         } else {
             return null;
         }
@@ -83,9 +80,9 @@ public class Epreuve_AthleteController {
      * Delete - Delete an athlete
      * @param id - The id of the athlete to delete
      */
-    @DeleteMapping("/epreuve/{id}")
+    @DeleteMapping("/epreuve_athlete/{id}")
     public void deleteEpreuve(@PathVariable("id") final Long id) {
-        epreuveService.deleteEpreuve(id);
+        epreuveAthleteService.deleteEpreuve_Athlete(id);
     }
 
 }
