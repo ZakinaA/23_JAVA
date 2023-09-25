@@ -1,28 +1,27 @@
 package bts.sio.api.controller;
 
-import bts.sio.api.model.Epreuve;
-import bts.sio.api.model.Epreuve;
+import bts.sio.api.model.Epreuve_Athlete;
 import bts.sio.api.model.Sport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import bts.sio.api.service.EpreuveService;
+import bts.sio.api.service.Epreuve_AthleteService;
 
 import java.util.Optional;
 
 @RestController
-public class EpreuveController {
+public class Epreuve_AthleteController {
 
     @Autowired
-    private EpreuveService epreuveService;
+    private Epreuve_AthleteService epreuveAthleteService;
 
     /**
      * Create - Add a new athlete
-     * @param epreuve An object athlete
+     * @param epreuve_Athlete An object athlete
      * @return The  object saved
      */
-    @PostMapping("/epreuve")
-    public Epreuve createEpreuve(@RequestBody Epreuve epreuve) {
-        return epreuveService.saveEpreuve(epreuve);
+    @PostMapping("/epreuve_athlete")
+    public Epreuve_Athlete createEpreuve_Athlete(@RequestBody Epreuve_Athlete epreuveAthlete) {
+        return epreuveAthleteService.getEpreuve_Athletes(epreuveAthlete);
     }
 
 

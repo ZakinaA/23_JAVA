@@ -17,9 +17,6 @@ public class Epreuve {
     @Column(name = "nom")
     private String nom;
 
-    @Column(name = "genre")
-    private String genre;
-
     @ManyToOne
     @JoinColumn(name = "sport_id")
     private Sport sport;
