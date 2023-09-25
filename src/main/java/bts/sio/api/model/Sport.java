@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import javax.lang.model.element.NestingKind;
+import java.util.Set;
 
 @Data
 @Entity
@@ -24,6 +25,8 @@ import javax.lang.model.element.NestingKind;
     @JoinColumn(name = "olympiade_id")
     private Olympiade olympiade;
 
+    @OneToMany (mappedBy = "sport")
+    private Set<Epreuve> LesEpreuves;
 
 
 }
