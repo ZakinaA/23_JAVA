@@ -12,7 +12,7 @@ public class Olympiade {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String numero ;
+    private String numero;
     private Integer annee;
     private String ville ;
 

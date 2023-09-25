@@ -1,15 +1,15 @@
 package bts.sio.api.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
-import javax.lang.model.element.NestingKind;
+import java.time.LocalDate;
 
 @Data
 @Entity
-@Table(name ="sport")
-    public class Sport {
+@Table(name = "Epreuve")
+public class Epreuve {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -17,13 +17,10 @@ import javax.lang.model.element.NestingKind;
     @Column(name = "nom")
     private String nom;
 
-    @Column(name = "descriptif")
-    private String descriptif;
+    @Column(name = "genre")
+    private String genre;
 
     @ManyToOne
-    @JoinColumn(name = "olympiade_id")
-    private Olympiade olympiade;
-
-
-
+    @JoinColumn(name = "sport_id")
+    private Sport sport;
 }
